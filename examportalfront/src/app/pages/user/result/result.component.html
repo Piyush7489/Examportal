@@ -1,0 +1,39 @@
+<div class="bootstrap-wrapper mt">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title >
+                        <h1 style="margin-left: 200px;">Quize Result</h1>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="text-center">
+                    
+                    <div class="row text-center">
+                        <div class="col-md-6 offset-md-3">
+                            <table  class="text-center" style="margin-left: 50px;" >
+                                <tr >
+                                    <td  >Question Attempted : </td>
+                                    <td><b>{{result.attempted}}</b></td>
+                                </tr>
+                                <tr>
+                                    <td  ><span style="margin-left: 30px;">Correct Answer : </span></td>
+                                    <td><b>{{result.currectAnswers}}</b></td>
+                                </tr>
+                                <tr>
+                                    <td><span style="margin-left: 50px;">Total Marks : </span></td>
+                                    <td><b>{{result.marksGot}}</b></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </mat-card-content>
+                <mat-card-actions class="bntp">
+                    <button mat-raised-button color="primary" routerLink="/user-dashboard/recent-quize" style="margin-left: 200px;" class="mr text-center">Back Home</button>
+                    <button mat-raised-button color="accent" (click)="printPage()">Print</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

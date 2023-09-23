@@ -1,0 +1,98 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body 
+{ 
+    height: 100%; 
+    background: #E1F5FE;
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.text-center{
+text-align: center;
+}
+.mr{
+    margin-right: 20px!important;
+}
+
+.ml{
+    margin-left: 20px!important;
+}
+
+.mb{
+    margin-bottom: 20px!important;
+}
+
+.mt{
+    margin-top: 20px!important;
+}
+
+.mr10{
+    margin-right: 10px!important;
+}
+.ml10{
+    margin-left: 10px!important;
+}
+
+.mb10{
+    margin-bottom: 10px!important;
+}
+
+.mt10{
+    margin-top: 10px!important;
+}
+.mr30{
+    margin-right: 30px!important;
+}
+.ml30{
+    margin-left: 30px!important;
+}
+
+.mb30{
+    margin-bottom: 30px!important;
+}
+
+.mt30{
+    margin-top: 30px!important;
+}
+
+
+.full-width{
+    width: 90%;
+    margin-left: 20px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+
+
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.bntp{
+    padding-bottom: 10px;
+}
+
+.pt5{
+    padding-top: 5px;
+}
+.truncate{
+    display: block;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.example-header-image {
+    background-image: url('./assets/quiz.png');
+    background-size: cover;
+  }

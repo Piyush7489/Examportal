@@ -1,0 +1,51 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card class="mt">
+                    <mat-card-header>
+                        <!-- Heading -->
+                        <mat-card-title>
+                            <h2>Read the Insrtuctions of this Page Carefully</h2>
+                            <mat-card-subtitle>
+                                One Step More to Go !!
+                            </mat-card-subtitle>
+                        </mat-card-title>
+                        
+                    </mat-card-header>
+                    <mat-card-content>
+                        <!-- Content -->
+                        <h1>{{quize.title}}</h1>
+                        <p>{{quize.description}}</p>
+                        <mat-divider></mat-divider>
+                        <h1 class="text-center mt">Important Instructions</h1>
+
+                        <ul>
+                            <li>This Quize only for prectice purpose.</li>
+                            <li>You have to submit Quize with in <b>( {{quize.numberOfQuestions*2}} Minuts ).</b></li>
+                            <li>You can Attempt the Quize any Number of Time.</li>
+                            <li>There are <b>{{quize.numberOfQuestions}} Questions in this Quize.</b></li>
+                            <li>Each Question carries <b>{{quize.maxMarks/quize.numberOfQuestions}}</b> marks no negative marking for wrong Question.</li>
+                            <li>All Question is MCQ Type</li>
+                        </ul>
+                        <mat-divider></mat-divider>
+                        <h1 class="text-center mt">Attempting Quize</h1>
+                        <ul>
+                            <li>Click <b>Start</b> button to start Quize.</li>
+                            <li>Time will start the moment you click the <b>Start</b> button.</li>
+                            <li>You can not resume this Quize,if intrrupted due to any reason.</li>
+                            <li>Scroll down to move next Question.</li>
+                            <li>Clicl on <b>Submit Quize</b> button on completion of the Quize.</li>
+                            <li>Report of the test is automatically generated in the form of PDF.</li>
+                        </ul>
+                    </mat-card-content>
+                    <mat-divider></mat-divider>
+                    <mat-card-actions style="margin-left: 400px;">
+                        <!-- Actions -->
+                        <button mat-raised-button color="primary" (click)="start(quize.id)">Start Quize</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
