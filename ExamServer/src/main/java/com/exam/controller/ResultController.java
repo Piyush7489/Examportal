@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.exam.entity.quize.Result;
+import com.exam.repo.UserRepo;
+import com.exam.service.QuizeService;
 import com.exam.service.ResultService;
 
 @RestController
@@ -22,6 +24,12 @@ public class ResultController {
 
 	@Autowired
 	private ResultService rs;
+	
+	@Autowired
+	private QuizeService qs;
+	
+	@Autowired
+	private UserRepo ur;
 
 	@GetMapping("/{userId}")
 	public ResponseEntity<List<Result>> getResult(@PathVariable Long userId) {
@@ -39,5 +47,12 @@ public class ResultController {
 	{
 		Result result = this.rs.getSingleResult(id);
 		return new ResponseEntity<Result>(result,HttpStatus.OK);
+	}
+	
+	@GetMapping("/search/{key}/{userId}")
+	public ResponseEntity<List<Result>> search(@PathVariable String key,@PathVariable Long userId)
+	{
+		Long qId = this.qs.SearchResult(key);
+		return ResponseEntity.ok(this.rs.getSearch(this.ur.findById(userId).get(),this.qs.getQuize(qId) ));
 	}
 }
