@@ -24,4 +24,6 @@ public interface QuizeService {
 	
 	List<Quize> getActicveQuizzesOfCategory(Category category);
 	
+	Long SearchResult(String key);
+	
 }

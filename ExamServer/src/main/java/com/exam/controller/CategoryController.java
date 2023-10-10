@@ -1,5 +1,6 @@
 package com.exam.controller;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.exam.entity.quize.Category;
 import com.exam.service.CategoryService;
+import com.portal.app.helper.AppConstants;
+import com.portal.app.helper.CategoryResponse;
 
 @RestController
 @RequestMapping("/category")
@@ -43,10 +47,15 @@ public class CategoryController {
 	}
 	
 //	GET ALL CATEGORIES
-	@GetMapping("/")
-	public ResponseEntity<Set<Category>> getCategoies()
+	@GetMapping("/admin")
+	public ResponseEntity<CategoryResponse> getCategoiess(
+			@PathVariable(value = "pageNo" , required = false) Integer pageNo,
+			@PathVariable(value = "pageSize", required = false) Integer pageSize,
+			@PathVariable(value = "sortBy", required = false) String sortBy,
+			@PathVariable (value = "sortDir",required = false)String sortDir
+			)
 	{
-		Set<Category> categories = this.cs.getCategories();
+		CategoryResponse categories = this.cs.getCategories(pageNo, pageSize,sortBy,sortDir);
 		return ResponseEntity.ok(categories);
 	}
 	
@@ -63,5 +72,13 @@ public class CategoryController {
 	public void deleteCategory(@PathVariable Long categoryId)
 	{
 		this.cs.deleteCategory(categoryId);
+	}
+	
+//	GET ALL CATEGORIES FOR USER
+	@GetMapping("/")
+	public ResponseEntity<Set<Category>> getAllCategories()
+	{
+		Set<Category> categories = this.cs.getAllCategories();
+		return ResponseEntity.ok(categories);
 	}
 }

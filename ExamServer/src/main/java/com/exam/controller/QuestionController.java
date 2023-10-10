@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.exam.entity.User;
@@ -26,7 +27,7 @@ import com.exam.repo.UserRepo;
 import com.exam.service.QuestionService;
 import com.exam.service.QuizeService;
 import com.exam.service.ResultService;
-import com.exam.service.UserService;
+import com.portal.app.helper.AppConstants;
 
 @RestController
 @RequestMapping("/question")
@@ -60,15 +61,18 @@ public class QuestionController {
 	
 //	GET ALL of Quize
 	@GetMapping("/quize/{qid}")
-	public ResponseEntity<?> getAllOfQuize(@PathVariable Long qid)
+	public ResponseEntity<?> getAllOfQuize(@PathVariable Long qid,
+			@RequestParam(value = "pageNo", defaultValue = AppConstants.PAGE_NUMBER, required = false) Integer pageNo,
+			@RequestParam(value = "pageSize", defaultValue = AppConstants.PAGE_SIZE, required = false) Integer pageSize,
+			@RequestParam(value = "sortBy", defaultValue = AppConstants.SORT_BY, required = false) String sortBy,
+			@RequestParam (value = "sortDir",defaultValue = AppConstants.SORT_DIR,required = false)String sortDir)
 	{
 //		Quize quize = new Quize();
 //		quize.setId(qid);
 //		return ResponseEntity.ok(this.qs.getQuestionsOFQuize(quize));
 		Quize quize = this.qss.getQuize(qid);
 		Set<Question> questions = quize.getQuestions();
-		@SuppressWarnings("unchecked")
-		List<Question> list = new ArrayList(questions);
+		List<Question> list = new ArrayList<Question>(questions);
 		if(list.size()>Integer.parseInt(quize.getNumberOfQuestions()))
 		{
 			list = list.subList(0, Integer.parseInt(quize.getNumberOfQuestions()));

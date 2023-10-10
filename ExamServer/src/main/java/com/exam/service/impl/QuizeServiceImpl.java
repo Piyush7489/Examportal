@@ -71,6 +71,12 @@ public class QuizeServiceImpl implements QuizeService {
 		
 		return this.qr.findByCategoryAndActive(category, true);
 	}
+
+	@Override
+	public Long SearchResult(String key) {
+		
+		return this.qr.Searching(key);
+	}
 	
 	
 

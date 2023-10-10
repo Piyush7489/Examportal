@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.exam.entity.User;
+import com.exam.entity.quize.Quize;
 import com.exam.entity.quize.Result;
 import com.exam.repo.ResultRepo;
 import com.exam.repo.UserRepo;
@@ -38,6 +39,13 @@ public class ResultServiceImpl implements ResultService {
 	public Result getSingleResult(Long Id) {
 		// TODO Auto-generated method stub
 		return this.rr.findById(Id).get();
+	}
+
+	@Override
+	public List<Result> getSearch(User user, Quize quize) {
+		System.out.println(this.rr.findByUserAndQuize(user, quize));
+		
+		return this.rr.findByUserAndQuize(user, quize);
 	}
 
 }
